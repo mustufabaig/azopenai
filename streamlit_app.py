@@ -40,7 +40,7 @@ if question:
       st.write(result_json)
       df = dbconn.query_db(result_json["query"])
       st.code(df.to_json(orient='records'))
-      st.write(df)
+      st.dataframe(df)
       #pandaai
       llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
       #pandas_ai = PandasAI(llm)
