@@ -8,7 +8,7 @@ import db as dbconn
 import pandas as pd
 
 from pandasai import PandasAI
-from pandasai.llm.azure_openai import AzureOpenAI
+from pandasai.llm import AzureOpenAI
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
