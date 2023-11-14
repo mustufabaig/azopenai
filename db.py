@@ -21,6 +21,7 @@ def get_conn():
 def query_db(sql):
   conn = get_conn()
   df = pd.read_sql_query(sql, conn)
+  df.columns = df.columns.str.upper()
   return df    
 
 
