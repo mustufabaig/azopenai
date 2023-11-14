@@ -8,7 +8,7 @@ import db as dbconn
 import pandas as pd
 
 from pandasai import PandasAI
-from pandasai.llm.openai import OpenAI
+from pandasai.llm.azure_openai import AzureOpenAI
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
@@ -40,6 +40,6 @@ if question:
       st.code(df.to_json(orient='records'))
       st.write(df)
       #pandaai
-      llm = OpenAI(api_token=st.secrets["OPENAI_API_KEY"])
+      llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
       pandas_ai = PandasAI(llm)
       st.write(pandas_ai.run(df, prompt=result_json["input"]))
