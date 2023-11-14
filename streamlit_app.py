@@ -2,6 +2,7 @@
       #Note: This code sample requires OpenAI Python library version 0.28.1 or lower.
 import os
 import openai
+import streamlit as st
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
