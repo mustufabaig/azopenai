@@ -4,6 +4,8 @@ import os
 import openai
 import streamlit as st
 import json
+import db as dbconn
+import pandas as pd
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
@@ -31,3 +33,4 @@ if question:
       result_json = json.loads(result_string)
       st.write(raw_response)
       st.write(result_json)
+      df = 
