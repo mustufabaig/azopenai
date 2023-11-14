@@ -33,5 +33,5 @@ if question:
       result_json = json.loads(result_string)
       st.write(raw_response)
       st.write(result_json)
-      df = dbconn.query_db(result_json.query)
+      df = dbconn.query_db(result_json["query"])
       st.write(df)
