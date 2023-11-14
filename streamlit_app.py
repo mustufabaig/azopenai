@@ -11,6 +11,7 @@ from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from pandasai.llm import AzureOpenAI
 from pandasai import SmartDataframe
+from pandasai.responses.streamlit_response import StreamlitResponse
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
