@@ -3,6 +3,7 @@
 import os
 import openai
 import streamlit as st
+import json
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
@@ -25,5 +26,8 @@ if question:
         presence_penalty=0,
         stop=None
       )
-      st.write(response)
-      st.write(response.choices[0].message.content)
+      raw_response = response;
+      result_string = raw_response.choices[0].message.content
+      result_json = json.loads(result_string)
+      st.write(raw_response)
+      st.write(result_string)
