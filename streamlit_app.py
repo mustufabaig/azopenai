@@ -10,6 +10,7 @@ import pandas as pd
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from pandasai.llm import AzureOpenAI
+from pandasai import SmartDataframe
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
@@ -42,7 +43,9 @@ if question:
       st.write(df)
       #pandaai
       llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
-      pandas_ai = PandasAI(llm)
+      #pandas_ai = PandasAI(llm)
+      sdf = SmartDataframe(df, config={"llm" : llm})
       question = result_json["input"]
       st.write(question)
-      st.write(pandas_ai.run(df, prompt=question))
+      #st.write(pandas_ai.run(df, prompt=question))
+      st.write(sdf.chat(question))
