@@ -34,4 +34,5 @@ if question:
       st.write(raw_response)
       st.write(result_json)
       df = dbconn.query_db(result_json["query"])
+      st.code(df)
       st.write(df)
