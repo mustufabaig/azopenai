@@ -1,6 +1,6 @@
 snowflake-sqlalchemy
 streamlit
-openai==0.28.1
+openai
 pandas
 matplotlib
 pandasai==1.4.8
