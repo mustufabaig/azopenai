@@ -30,4 +30,4 @@ if question:
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       st.write(raw_response)
-      st.write(result_string)
+      st.write(result_json)
