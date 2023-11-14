@@ -4,3 +4,4 @@ openai==0.28.1
 pandas
 matplotlib
 pandasai
+pandasai[azure_openai]
