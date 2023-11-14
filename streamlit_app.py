@@ -49,4 +49,4 @@ if question:
       st.write(question)
       #st.write(pandas_ai.run(df, prompt=question))
       st.write(sdf.chat(question))
-      st.write(sdf.chat(question + ". Plot the histogram of regions using different colors."))
+      print(sdf.chat(question + ". Plot the histogram of regions using different colors."))
