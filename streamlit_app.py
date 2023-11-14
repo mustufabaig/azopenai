@@ -26,3 +26,4 @@ if question:
         stop=None
       )
       st.write(response)
+      st.write(response.choices[0].message.content)
