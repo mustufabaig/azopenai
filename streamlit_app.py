@@ -36,3 +36,9 @@ if question:
       df = dbconn.query_db(result_json["query"])
       st.code(df.to_json(orient='records'))
       st.write(df)
+      #pandaai
+      from pandasai import PandasAI
+      from pandasai.llm.openai import OpenAI
+      llm = OpenAI(api_token=st.secrets["OPENAI_API_KEY"])
+      pandas_ai = PandasAI(llm)
+      st.write(pandas_ai.run(df, prompt=result_json["input"]))
