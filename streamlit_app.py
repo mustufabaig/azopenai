@@ -43,4 +43,5 @@ if question:
       #pandaai
       llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
       pandas_ai = PandasAI(llm)
-      st.write(pandas_ai.run(df, prompt=result_json["input"]))
+      question = result_json["input"]
+      st.write(pandas_ai.run(df, prompt=question))
