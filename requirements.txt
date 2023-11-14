@@ -3,4 +3,4 @@ streamlit
 openai==0.28.1
 pandas
 matplotlib
-pandasai
+pandasai==1.4.8
