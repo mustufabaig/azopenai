@@ -53,7 +53,8 @@ if question:
       st.code(df.to_json(orient='index'))
       st.code(df.to_json(orient='columns'))
       st.code(df.to_json(orient='values'))
-      
+
+      st.write(df.describe())
       st.dataframe(df)
       st.line_chart(df, y = ["total_fraud_volume"])
       st.bar_chart(df, y = ["total_fraud_volume"])
