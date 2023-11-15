@@ -55,4 +55,4 @@ if question:
 
       sdf = SmartDataframe(df, config={"llm" : llm})
       st.write(sdf.chat(question))
-      pd.plot_histogram(column="FRAUD_VOLUME")
+      sdf.plot_histogram(column="FRAUD_VOLUME")
