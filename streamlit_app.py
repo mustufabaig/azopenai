@@ -52,7 +52,7 @@ if question:
       #pandas_ai = PandasAI(llm)
       #st.write(pandas_ai.run(df, prompt=question))
 
-      sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True, "response_parser": StreamlitResponse})
+      sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True})
       sdf.chat(question)
       sdf.chat(question + ". Plot the histogram of regions using different colors.")
       
