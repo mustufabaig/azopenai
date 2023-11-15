@@ -55,7 +55,7 @@ if question:
       st.code(df.to_json(orient='columns'))
       st.code(df.to_json(orient='values'))
 
-      st.dataframe(df)
+      st.dataframe(df, hide_index=True)
       st.line_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
       st.bar_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
       
