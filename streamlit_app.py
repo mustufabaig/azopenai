@@ -49,14 +49,9 @@ if question:
       
       #pandaai
       llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
-      #pandas_ai = PandasAI(llm)
-      #st.write(pandas_ai.run(df, prompt=question))
+      pandas_ai = PandasAI(llm)
+      st.write(pandas_ai.run(df, prompt=question))
 
-      sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True})
-      st.write(sdf.chat(question))
-      st.write(sdf.chat(question + ". Plot the histogram of regions using different colors."))
-      
+      #sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True})
       #st.write(sdf.chat(question))
-      #print(sdf.chat(question + ". Plot the histogram of regions using different colors."))
-      #st.write(sdf.chat(question))
-      
+      #st.write(sdf.chat(question + ". Plot the histogram of regions using different colors."))
