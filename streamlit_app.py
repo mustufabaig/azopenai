@@ -56,6 +56,8 @@ if question:
       
       st.dataframe(df)
       st.line_chart(df, y = ["total_fraud_volume"])
+      st.bar_chart(df, y = ["total_fraud_volume"])
+      st.line_chart(df, y = ["total_fraud_volume"])
       
       #pandaai
       #st.write('pandasai')
