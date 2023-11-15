@@ -44,7 +44,8 @@ if question:
       st.write(result_json)
       
       df = dbconn.query_db(result_json["query"])
-      df = df.set_index("period_date")
+      
+      st.code(df.columns.values.tolist())
 
       st.code(df.to_json())
       st.code(df.to_json(orient='records'))
