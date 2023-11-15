@@ -46,7 +46,13 @@ if question:
       df = dbconn.query_db(result_json["query"])
       df = df.set_index("PERIOD_DATE")
 
+      st.code(df.to_json())
       st.code(df.to_json(orient='records'))
+      st.code(df.to_json(orient='split'))
+      st.code(df.to_json(orient='index'))
+      st.code(df.to_json(orient='columns'))
+      st.code(df.to_json(orient='values'))
+      
       st.dataframe(df)
       st.bar_chart(df)
       
