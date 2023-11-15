@@ -37,17 +37,26 @@ if question:
       raw_response = response;
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
+      question = result_json["input"]
+      
+      st.write(question)
       st.write(raw_response)
       st.write(result_json)
+      
       df = dbconn.query_db(result_json["query"])
       st.code(df.to_json(orient='records'))
       st.dataframe(df)
+      
       #pandaai
       llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
       #pandas_ai = PandasAI(llm)
-      sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True, "response_parser": StreamlitResponse})
-      question = result_json["input"]
-      st.write(question)
       #st.write(pandas_ai.run(df, prompt=question))
-      st.write(sdf.chat(question))
-      print(sdf.chat(question + ". Plot the histogram of regions using different colors."))
+
+      sdf = SmartDataframe(df, config={"llm" : llm, "verbose" : True, "response_parser": StreamlitResponse})
+      sdf.chat(question)
+      sdf.chat(question + ". Plot the histogram of regions using different colors.")
+      
+      #st.write(sdf.chat(question))
+      #print(sdf.chat(question + ". Plot the histogram of regions using different colors."))
+      #st.write(sdf.chat(question))
+      
