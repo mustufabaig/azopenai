@@ -55,7 +55,7 @@ if question:
       st.code(df.to_json(orient='values'))
       
       st.dataframe(df)
-      st.bar_chart(df.to_json())
+      st.line_chart(df)
       
       #pandaai
       #st.write('pandasai')
