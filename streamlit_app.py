@@ -23,7 +23,7 @@ message_text = [{"role":"system","content":"You are an AI assistant who works fo
 st.set_page_config(layout="wide")
 question = st.chat_input("How can I help you?")
 if question:
-      #message_text.append({"role":"user","content":question})
+      message_text.append({"role":"user","content":question})
       response = openai.ChatCompletion.create(
         engine="mbaig-gpt4",
         messages = message_text,
