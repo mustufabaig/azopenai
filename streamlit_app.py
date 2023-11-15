@@ -55,7 +55,7 @@ if question:
       st.code(df.to_json(orient='values'))
       
       st.dataframe(df)
-      st.line_chart(df, x = ["period_date"], y = ["total_fraud_volume"])
+      st.line_chart(df, y = ["total_fraud_volume"])
       
       #pandaai
       #st.write('pandasai')
