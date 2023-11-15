@@ -49,15 +49,15 @@ if question:
       st.code(df.columns.values.tolist())
 
       st.code(df.to_json())
-      st.code(df.to_json(orient='records'))
-      st.code(df.to_json(orient='split'))
-      st.code(df.to_json(orient='index'))
-      st.code(df.to_json(orient='columns'))
-      st.code(df.to_json(orient='values'))
+      #st.code(df.to_json(orient='records'))
+      #st.code(df.to_json(orient='split'))
+      #st.code(df.to_json(orient='index'))
+      #st.code(df.to_json(orient='columns'))
+      #st.code(df.to_json(orient='values'))
 
       st.dataframe(df, hide_index=True)
-      st.line_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
-      st.bar_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
+      #st.line_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
+      #st.bar_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
 
       if result_json["is_summary"] == "true":
             col1, col2, col3, col4, col5 = st.columns(5)
