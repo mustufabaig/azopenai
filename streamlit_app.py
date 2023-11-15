@@ -35,12 +35,13 @@ if question:
         stop=None
       )
       raw_response = response;
+      st.write(raw_response)
+
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       question = result_json["input"]
       
       st.write(question)
-      st.write(raw_response)
       st.write(result_json)
       
       df = dbconn.query_db(result_json["query"])
