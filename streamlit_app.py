@@ -46,13 +46,14 @@ if question:
       df = dbconn.query_db(result_json["query"])
       st.code(df.to_json(orient='records'))
       st.dataframe(df)
+      st.bar_chart(df)
       
       #pandaai
-      st.write('pandasai')
-      llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
+      #st.write('pandasai')
+      #llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
       #pandas_ai = PandasAI(llm)
       #st.write(pandas_ai.run(df, prompt=question))
 
-      sdf = SmartDataframe(df, config={"llm" : llm})
-      st.write(sdf.chat(question))
-      sdf.plot_histogram(column="FRAUD_VOLUME")
+      #sdf = SmartDataframe(df, config={"llm" : llm})
+      #st.write(sdf.chat(question))
+      #sdf.plot_histogram(column="FRAUD_VOLUME")
