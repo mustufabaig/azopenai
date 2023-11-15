@@ -56,9 +56,8 @@ if question:
 
       st.write(df.describe())
       st.dataframe(df)
-      st.line_chart(df, y = ["TOTAL_FRAUD_VOLUME"])
-      st.bar_chart(df, y = ["TOTAL_FRAUD_VOLUME"])
-      st.line_chart(df, y = ["TOTAL_FRAUD_VOLUME"])
+      st.line_chart(df, x = "PERIOD_DATE", y = ["TOTAL_FRAUD_VOLUME"])
+      st.bar_chart(df, x = "PERIOD_DATE", y = ["TOTAL_FRAUD_VOLUME"])
       
       #pandaai
       #st.write('pandasai')
