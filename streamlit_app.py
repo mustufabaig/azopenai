@@ -18,8 +18,7 @@ from pandasai.responses.streamlit_response import StreamlitResponse
 
 
 st.set_page_config(layout="wide", page_title="Home")
-add_page_title()
-show_pages([ Page("streamlit_app.py", "Home"), Page("pages/about.py", "Page 2")])
+show_pages([ Page("streamlit_app.py", "Fraud Insights"), Page("pages/about.py", "About")])
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
