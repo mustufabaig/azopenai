@@ -28,53 +28,16 @@ if question:
       response = openai.ChatCompletion.create(
         engine="mbaig-gpt4",
         messages = message_text,
+        response_format={"type", "json_object"},
         temperature=0.7,
         max_tokens=800,
         top_p=0.95,
         frequency_penalty=0,
         presence_penalty=0,
         stop=None
+        stream=True
       )
 
-      raw_response = response;
-      result_string = raw_response.choices[0].message.content
-      result_json = json.loads(result_string)
-      question = result_json["input"]
-      sql_query = result_json["query"]
-      text_result = result_json["text-result"]
-
-      df = dbconn.query_db(sql_query)
+      for chunk in response:
+            st.write(chunk)
       
-      with st.expander("Inspect"):
-            st.write(raw_response)
-            st.write(result_json)
-            st.code(df.columns.values.tolist())
-            st.code(df.to_json())
-      
-      st.write(text_result)
-      
-      row_count = len(df)
-      col_count = len(df.columns)
-      if result_json["is_summary"] == "true":
-            #st.bar_chart(df, x = "PERIOD_DATE", y = ["RECEIPTS_LOOKUPS","REPORTED_FRAUD","REPORTED_DISPUTES","FRAUD_DISPUTE_NOT_DEFLECTED","FRAUD_DISPUTE_DEFLECTED"])
-            col1, col2, col3, col4, col5 = st.columns(5)
-            if row_count == 1:
-                  col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0])
-                  col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0])
-                  col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0])
-                  col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0])
-                  col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0])
-            elif row_count == 2:
-                  col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0], str(df["RECEIPTS_LOOKUPS"].iloc[0]-df["RECEIPTS_LOOKUPS"].iloc[1]))
-                  col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0], str(df["REPORTED_FRAUD"].iloc[0]-df["REPORTED_FRAUD"].iloc[1]))
-                  col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0], str(df["REPORTED_DISPUTES"].iloc[0]-df["REPORTED_DISPUTES"].iloc[1]))
-                  col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0]-df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[1]))
-                  col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_DEFLECTED"].iloc[0]-df["FRAUD_DISPUTE_DEFLECTED"].iloc[1]))
-            else:
-                  st.line_chart(df, x = "PERIOD_DATE", y = ["RECEIPTS_LOOKUPS","REPORTED_FRAUD","REPORTED_DISPUTES","FRAUD_DISPUTE_NOT_DEFLECTED","FRAUD_DISPUTE_DEFLECTED"])
-                  st.dataframe(df, hide_index=True)
-      else:
-            st.dataframe(df, hide_index=True)
-
-
-                  
