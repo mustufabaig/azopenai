@@ -47,15 +47,10 @@ if question:
       for event in response:
             if "choices" in event:
                   st.write(event['choices'])
-                  event_time = time.time() - start_time  # calculate the time delay of the event
-                  collected_events.append(event)  # save the event response
-                  event_text = event['choices'][0]['delta']['content']  # extract the text
-                  completion_text += event_text  # append the text
-                  st.write(f"Text received: {event_text} ({event_time:.2f} seconds after request)")  # print the delay and text
                   
       # print the time delay and text received
-      st.write(f"Full response received {event_time:.2f} seconds after request")
-      st.write(f"Full text received: {completion_text}")
+      #st.write(f"Full response received {event_time:.2f} seconds after request")
+      #st.write(f"Full text received: {completion_text}")
 
 '''
       raw_response = response;
