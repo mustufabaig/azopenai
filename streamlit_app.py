@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import time
 
+from st_pages import Page, show_pages, add_page_title 
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from pandasai.llm import AzureOpenAI
