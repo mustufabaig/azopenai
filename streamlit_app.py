@@ -40,15 +40,16 @@ if question:
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       question = result_json["input"]
+      sql_query = result_json["query"]
       text_result = result_json["text-result"]
 
+      df = dbconn.query_db(sql_query)
+      
       with st.expander("Inspect"):
             st.write(raw_response)
             st.write(result_json)
             st.code(df.columns.values.tolist())
             st.code(df.to_json())
-      
-      df = dbconn.query_db(result_json["query"])
       
       st.write(text_result)
       
