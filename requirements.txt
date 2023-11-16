@@ -4,4 +4,4 @@ openai
 pandas
 matplotlib
 pandasai==1.4.8
-st_pages
+st_pages>=0.4.3
