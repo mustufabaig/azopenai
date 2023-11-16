@@ -50,12 +50,21 @@ if question:
       st.code(df.columns.values.tolist())
       st.code(df.to_json())
       st.dataframe(df, hide_index=True)
-
+      row_count = len(df)
       if result_json["is_summary"] == "true":
             #st.bar_chart(df, x = "PERIOD_DATE", y = ["RECEIPTS_LOOKUPS","REPORTED_FRAUD","REPORTED_DISPUTES","FRAUD_DISPUTE_NOT_DEFLECTED","FRAUD_DISPUTE_DEFLECTED"])
             col1, col2, col3, col4, col5 = st.columns(5)
-            col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0], str(df["RECEIPTS_LOOKUPS_DELTA"].iloc[0]))
-            col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0], str(df["REPORTED_FRAUD_DELTA"].iloc[0]))
-            col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0], str(df["REPORTED_DISPUTES_DELTA"].iloc[0]))
-            col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_NOT_DEFLECTED_DELTA"].iloc[0]))
-            col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_DEFLECTED_DELTA"].iloc[0]))
+            if row_count == 1:
+                  col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0])
+                  col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0])
+                  col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0])
+                  col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0])
+                  col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0])
+            if row_count == 2:
+                  col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0], str(df["RECEIPTS_LOOKUPS"].iloc[1]))
+                  col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0], str(df["REPORTED_FRAUD"].iloc[1]))
+                  col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0], str(df["REPORTED_DISPUTES"].iloc[1]))
+                  col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[1]))
+                  col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_DEFLECTED"].iloc[1]))
+
+                  
