@@ -41,6 +41,7 @@ if question:
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       question = result_json["input"]
+      text_result = result_json["text_result"]
       
       st.write(question)
       st.write(result_json)
@@ -50,6 +51,8 @@ if question:
       st.code(df.columns.values.tolist())
       st.code(df.to_json())
 
+      st.write(text_result)
+      
       row_count = len(df)
       col_count = len(df.columns)
       if result_json["is_summary"] == "true":
