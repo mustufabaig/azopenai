@@ -47,7 +47,7 @@ if question:
       for event in response:
             if "choices" in event:
                   st.write(event)
-                  if "delta" in event['choices'][0]:
+                  if len(event['choices']) > 0 and "delta" in event['choices'][0]:
                         if "content" in event['choices'][0]['delta']:
                               event_time = time.time() - start_time  # calculate the time delay of the event
                               collected_events.append(event)  # save the event response
