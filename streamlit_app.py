@@ -47,7 +47,7 @@ if question:
       for event in response:
             event_time = time.time() - start_time  # calculate the time delay of the event
             collected_events.append(event)  # save the event response
-            event_text = event['choices'][0] #['text']  # extract the text
+            event_text = event['choices'] #[0]['text']  # extract the text
             completion_text += event_text  # append the text
             st.write(f"Text received: {event_text} ({event_time:.2f} seconds after request)")  # print the delay and text
 
