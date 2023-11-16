@@ -48,32 +48,8 @@ if question:
       df = dbconn.query_db(result_json["query"])
       
       st.code(df.columns.values.tolist())
-
       st.code(df.to_json())
-      #st.code(df.to_json(orient='records'))
-      #st.code(df.to_json(orient='split'))
-      #st.code(df.to_json(orient='index'))
-      #st.code(df.to_json(orient='columns'))
-      #st.code(df.to_json(orient='values'))
-
       st.dataframe(df, hide_index=True)
-      #st.line_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
-      #st.bar_chart(df, x = "PERIOD_DATE", y = ["FRAUD_VOLUME"])
 
       if result_json["is_summary"] == "true":
-            col1, col2, col3, col4, col5 = st.columns(5)
-            col1.metric("RECEIPT LOOKUPS", df["RECEIPTS_LOOKUPS"].iloc[0], str(df["RECEIPTS_LOOKUPS_DELTA"].iloc[0]))
-            col2.metric("REPORTED FRAUD", df["REPORTED_FRAUD"].iloc[0], str(df["REPORTED_FRAUD_DELTA"].iloc[0]))
-            col3.metric("REPORTED DISPUTES", df["REPORTED_DISPUTES"].iloc[0], str(df["REPORTED_DISPUTES_DELTA"].iloc[0]))
-            col4.metric("FRAUD/DISPUTE NOT DEFLECTED", df["FRAUD_DISPUTE_NOT_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_NOT_DEFLECTED_DELTA"].iloc[0]))
-            col5.metric("FRAUD/DISPUTE DEFLECTED", df["FRAUD_DISPUTE_DEFLECTED"].iloc[0], str(df["FRAUD_DISPUTE_DEFLECTED_DELTA"].iloc[0]))
-
-      #pandaai
-      #st.write('pandasai')
-      #llm = AzureOpenAI(api_token=st.secrets["OPENAI_API_KEY"], api_base="https://mbaig-openai.openai.azure.com/", api_version="2023-07-01-preview", deployment_name="mbaig-gpt4")
-      #pandas_ai = PandasAI(llm)
-      #st.write(pandas_ai.run(df, prompt=question))
-
-      #sdf = SmartDataframe(df, config={"llm" : llm})
-      #st.write(sdf.chat(question))
-      #sdf.plot_histogram(column="FRAUD_VOLUME")
+            st.bar_chart(df, x = "PERIOD_DATE", y = ["RECEIPTS_LOOKUPS","REPORTED_FRAUD","REPORTED_DISPUTES","FRAUD_DISPUTE_NOT_DEFLECTED","FRAUD_DISPUTE_DEFLECTED"])
