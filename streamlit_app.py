@@ -35,22 +35,21 @@ if question:
         presence_penalty=0,
         stop=None
       )
-      raw_response = response;
-      st.write(raw_response)
 
+      raw_response = response;
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       question = result_json["input"]
       text_result = result_json["text-result"]
-      
-      st.write(question)
-      st.write(result_json)
+
+      with st.expander("Inspect"):
+            st.write(raw_response)
+            st.write(result_json)
+            st.code(df.columns.values.tolist())
+            st.code(df.to_json())
       
       df = dbconn.query_db(result_json["query"])
       
-      st.code(df.columns.values.tolist())
-      st.code(df.to_json())
-
       st.write(text_result)
       
       row_count = len(df)
