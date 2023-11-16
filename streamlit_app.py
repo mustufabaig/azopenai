@@ -37,31 +37,10 @@ if question:
         top_p=0.95,
         frequency_penalty=0,
         presence_penalty=0,
-        stop=None,
-        stream=True
+        stop=None
+        #stream=True
       )
 
-      # create variables to collect the stream of events
-      collected_events = []
-      completion_text = ''
-      for event in response:
-            if "choices" in event:
-                  st.write(event)
-                  '''
-                  if len(event['choices']) > 0 and "delta" in event['choices'][0]:
-                        if "content" in event['choices'][0]['delta']:
-                              event_time = time.time() - start_time  # calculate the time delay of the event
-                              collected_events.append(event)  # save the event response
-                              event_text = event['choices'][0]['delta']['content']  # extract the text
-                              completion_text += event_text  # append the text
-                              st.write("Text received: {event_text} ({event_time:.2f} seconds after request)".format(event_text)  # print the delay and text
-                  '''
-      # print the time delay and text received
-      st.write("full response received")
-      #st.write(f"Full response received {event_time:.2f} seconds after request")
-      #st.write(f"Full text received: {completion_text}")
-
-'''
       raw_response = response;
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
@@ -101,4 +80,3 @@ if question:
                   st.dataframe(df, hide_index=True)
       else:
             st.dataframe(df, hide_index=True)
-'''
