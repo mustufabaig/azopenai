@@ -4,3 +4,4 @@ openai
 pandas
 matplotlib
 pandasai==1.4.8
+st_pages
