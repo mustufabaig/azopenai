@@ -34,7 +34,7 @@ if question:
         top_p=0.95,
         frequency_penalty=0,
         presence_penalty=0,
-        stop=None
+        stop=None,
         stream=True
       )
 
