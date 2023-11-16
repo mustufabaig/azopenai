@@ -46,9 +46,9 @@ if question:
       completion_text = ''
       for event in response:
             if "choices" in event:
+                  st.write(event['choices'])
                   if "delta" in event['choices'][0]:
                         if "content" in event['choices'][0]['delta']:
-                              #st.write(event['choices'])
                               event_time = time.time() - start_time  # calculate the time delay of the event
                               collected_events.append(event)  # save the event response
                               event_text = event['choices'][0]['delta']['content']  # extract the text
