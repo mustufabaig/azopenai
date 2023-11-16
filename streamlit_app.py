@@ -46,7 +46,7 @@ if question:
       completion_text = ''
       for event in response:
             if "choices" in event:
-                  st.write(event['choices'])
+                  st.write(event)
                   if "delta" in event['choices'][0]:
                         if "content" in event['choices'][0]['delta']:
                               event_time = time.time() - start_time  # calculate the time delay of the event
