@@ -7,6 +7,7 @@ import json
 import db as dbconn
 import pandas as pd
 import numpy as np
+import time
 
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
@@ -25,6 +26,9 @@ st.set_page_config(layout="wide")
 question = st.chat_input("How can I help you?")
 if question:
       message_text.append({"role":"user","content":question})
+      
+      # record the time before the request is sent
+      start_time = time.time()
       response = openai.ChatCompletion.create(
         engine="mbaig-gpt4",
         messages = message_text,
@@ -37,6 +41,17 @@ if question:
         stream=True
       )
 
-      for chunk in response:
-            st.write(chunk)
-      
+      # create variables to collect the stream of events
+      collected_events = []
+      completion_text = ''
+      for event in response:
+            event_time = time.time() - start_time  # calculate the time delay of the event
+            collected_events.append(event)  # save the event response
+            event_text = event['choices'][0]['text']  # extract the text
+            completion_text += event_text  # append the text
+            st.write(f"Text received: {event_text} ({event_time:.2f} seconds after request)")  # print the delay and text
+
+      # print the time delay and text received
+      st.write(f"Full response received {event_time:.2f} seconds after request")
+      st.write(f"Full text received: {completion_text}")
+
