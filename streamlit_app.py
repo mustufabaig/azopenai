@@ -28,7 +28,6 @@ if question:
       response = openai.ChatCompletion.create(
         engine="mbaig-gpt4",
         messages = message_text,
-        response_format={"type", "json_object"},
         temperature=0.7,
         max_tokens=800,
         top_p=0.95,
