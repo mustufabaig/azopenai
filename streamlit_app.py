@@ -41,7 +41,7 @@ if question:
       result_string = raw_response.choices[0].message.content
       result_json = json.loads(result_string)
       question = result_json["input"]
-      text_result = result_json["text_result"]
+      text_result = result_json["text-result"]
       
       st.write(question)
       st.write(result_json)
