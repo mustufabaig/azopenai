@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import time
 
-from st_pages import Page, Section, show_pages, add_page_title 
+from st_pages import Page, show_pages, add_page_title 
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from pandasai.llm import AzureOpenAI
@@ -18,7 +18,7 @@ from pandasai.responses.streamlit_response import StreamlitResponse
 
 
 st.set_page_config(layout="wide", page_title="Home")
-show_pages([ Section(name="Fraud Insights"), Page("streamlit_app.py", "Merchant"), Page("issuer.py", "Issuer"), Page("acquirer.py", "Acquirer"), Page("pages/about.py", "About", in_section=False)])
+show_pages([ Page("streamlit_app.py", "Merchant"), Page("pages/about.py", "About", in_section=False)])
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
