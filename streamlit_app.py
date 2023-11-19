@@ -60,9 +60,8 @@ if question:
                   st.code(df.to_json())
 
             st.write(text_result)
-
             df = dbconn.query_db(sql_query)
-
+            
             row_count = len(df)
             col_count = len(df.columns)
             if result_json["is_summary"] == "true":
