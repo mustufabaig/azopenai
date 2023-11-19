@@ -35,9 +35,8 @@ message_text = [{"role":"system","content":"You are an AI assistant who works fo
 if question := st.chat_input("How can I help you?"):
       # Add user message to chat history
       st.session_state.messages.append({"role": "user", "content": question})
-      
       #display chat messages from history in drop down
-      st.selectbox("Access your history", [value["content"] for value in st.session_state.messages], index=None, placeholder="Select question from history...")
+      st.selectbox("Access your history", np.unique([value["content"] for value in st.session_state.messages]), index=None, placeholder="Select question from history...")
       
       with st.spinner("In progress..."):
             message_text.append({"role":"user","content":question})
