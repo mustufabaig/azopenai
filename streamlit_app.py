@@ -62,8 +62,8 @@ if question:
             df = dbconn.query_db(sql_query)
             st.write("Done querying data sources")
             
-            expander.write(df.columns.values.tolist())
-            expander.write(df.to_json())
+            expander.code(df.columns.values.tolist())
+            expander.code(df.to_json())
             
             row_count = len(df)
             col_count = len(df.columns)
