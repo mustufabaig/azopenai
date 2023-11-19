@@ -49,6 +49,7 @@ if question:
             raw_response = response;
             result_string = raw_response.choices[0].message.content
             result_json = json.loads(result_string)
+            
             question = result_json["input"]
             sql_query = result_json["query"]
             text_result = result_json["text-result"]
@@ -60,7 +61,7 @@ if question:
             expander.write(result_json)
 
             df = dbconn.query_db(sql_query)
-            st.write("Done querying data sources")
+            st.write("Preparing output...")
             
             expander.code(df.columns.values.tolist())
             expander.code(df.to_json())
