@@ -100,6 +100,6 @@ def init_chat(prompt):
                         st.dataframe(df, hide_index=True)
 
 def ques_from_hist_selected(question):
-      init_chat(question)
+      init_chat(prompt=question)
       
-init_chat()
+init_chat(prompt=None)
