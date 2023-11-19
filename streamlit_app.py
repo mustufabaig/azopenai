@@ -54,9 +54,10 @@ if question:
             text_result = result_json["text-result"]
 
             st.write(text_result)
-            with st.expander("Inspect") as expander:
-                  st.write(raw_response)
-                  st.write(result_json)
+            
+            expander = st.expander("Inspect")
+            expander.write(raw_response)
+            expander.write(result_json)
 
             df = dbconn.query_db(sql_query)
             st.write("Done querying data sources")
