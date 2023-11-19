@@ -37,7 +37,7 @@ if question := st.chat_input("How can I help you?"):
       st.session_state.messages.append({"role": "user", "content": question})
       
       #display chat messages from history in drop down
-      st.selectbox("Access your history", st.session_state.messages, index=None, placeholder="Select question from history...")
+      st.selectbox("Access your history", [value["content"] for key in st.session_state.messages], index=None, placeholder="Select question from history...")
       
       with st.spinner("In progress..."):
             message_text.append({"role":"user","content":question})
