@@ -10,6 +10,8 @@ import numpy as np
 import time
 
 from st_pages import Page, show_pages, add_page_title 
+from streamlit_extras.app_logo import add_logo
+
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from pandasai.llm import AzureOpenAI
@@ -20,6 +22,7 @@ from pandasai.responses.streamlit_response import StreamlitResponse
 st.set_page_config(layout="wide", page_title="Home")
 show_pages([ Page("streamlit_app.py", "Merchant"), Page("pages/about.py", "About", in_section=False)])
 st.title('Fraud Insights - Merchant')
+add_logo("https://asset.mastercard.com/content/dam/dxp/dxp-demo-assets/images/logos/mclogo-for-footer.svg")
 
 openai.api_type = "azure"
 openai.api_base = "https://mbaig-openai.openai.azure.com/"
