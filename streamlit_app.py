@@ -53,14 +53,16 @@ if question:
             sql_query = result_json["query"]
             text_result = result_json["text-result"]
 
-            with st.expander("Inspect"):
+            st.write(text_result)
+            with st.expander("Inspect") as expander:
                   st.write(raw_response)
                   st.write(result_json)
-                  st.code(df.columns.values.tolist())
-                  st.code(df.to_json())
 
-            st.write(text_result)
             df = dbconn.query_db(sql_query)
+            st.write("Done querying data sources")
+            
+            expander.write(st.code(df.columns.values.tolist()))
+            expander.write(st.code(df.to_json()))
             
             row_count = len(df)
             col_count = len(df.columns)
