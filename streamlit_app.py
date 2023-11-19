@@ -99,7 +99,7 @@ def init_chat(prompt):
                   else:
                         st.dataframe(df, hide_index=True)
 
-def ques_from_hist_selected(question):
-      init_chat(prompt=question)
+def ques_from_hist_selected(hist_prompt):
+      init_chat(prompt=hist_prompt)
       
 init_chat(prompt=None)
