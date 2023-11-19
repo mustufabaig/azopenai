@@ -20,7 +20,7 @@ from pandasai.responses.streamlit_response import StreamlitResponse
 
 
 st.set_page_config(layout="wide", page_title="Home")
-show_pages([ Page("streamlit_app.py", "Merchant"), Page("pages/about.py", "About", in_section=False)])
+#show_pages([ Page("streamlit_app.py", "Merchant"), Page("pages/about.py", "About", in_section=False)])
 st.title('Fraud Insights - Merchant')
 add_logo("https://asset.mastercard.com/content/dam/dxp/dxp-demo-assets/images/logos/mclogo-for-footer.svg")
 
